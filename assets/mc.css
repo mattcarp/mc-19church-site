@@ -1,0 +1,156 @@
+/* ==========================================================================
+   mc.css — MC house design system, v0.1
+   Canonical token file for the system described in the vault at
+   Areas/design/mc-house-system.md
+
+   Two tiers, and the distinction is load-bearing:
+     --ac-*  UI accents. Bright. Borders, dots, small labels. Never a chart fill.
+     --dv-*  Data marks. Same hues snapped to OKLCH lightness 0.48–0.67.
+
+   Two surfaces:
+     [data-mc="panel"]     instrument panel — dashboards, briefings, status boards
+     [data-mc="document"]  document — letters, house pages, anything read not glanced
+   ========================================================================== */
+
+:root {
+  /* --- UI accents (bright; borders, dots, labels — never chart fills) ----- */
+  --ac-green:  #6ee7b7;  /* done, human-confirmed        */
+  --ac-amber:  #f5c451;  /* in flight                    */
+  --ac-blue:   #7aa7ff;  /* waiting                      */
+  --ac-orange: #ff8f4a;  /* the one thing                */
+
+  /* --- Data marks (chart fills, large filled areas) ----------------------- */
+  --dv-green:  #0ea175;
+  --dv-amber:  #af8100;
+  --dv-blue:   #5c87dc;
+  --dv-orange: #d26617;
+
+  /* --- Type scale. Four sizes. No more. ----------------------------------- */
+  --t-hero:  20px;    /* one per screen                                  */
+  --t-body:  13.5px;  /* everything actually read                        */
+  --t-prov:  11px;    /* provenance, timestamps, sources — mono          */
+  --t-lede:  9.5px;   /* section lede — mono, uppercase, .16em tracking  */
+
+  --f-sans: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --f-serif: Charter, "Bitstream Charter", Cambria, Georgia, serif;
+
+  --hero-wt: 640;
+  --hero-tr: -0.02em;
+  --lede-tr: 0.16em;
+
+  /* --- Rhythm ------------------------------------------------------------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 14px;
+  --sp-4: 22px;
+  --sp-5: 36px;
+  --measure: 68ch;
+}
+
+/* --------------------------------------------------------------------------
+   PANEL surface — the instrument panel. Dark, dense, glanceable.
+   -------------------------------------------------------------------------- */
+[data-mc="panel"] {
+  --bg:      #0b0c0d;
+  --surface: #131517;
+  --ink:     #e9e7e3;
+  --grey:    #9a9691;
+  --faint:   #6b6762;
+  --hair:    #26292c;
+  --accent:  var(--ac-orange);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: var(--t-body);
+}
+
+/* --------------------------------------------------------------------------
+   DOCUMENT surface — read, not glanced. Serif prose, mono provenance,
+   one accent and one only.
+   -------------------------------------------------------------------------- */
+[data-mc="document"] {
+  --bg:      #fffefc;
+  --surface: #f2ede4;
+  --ink:     #111;
+  --grey:    #555;
+  --faint:   #8a8479;
+  --hair:    #ddd;
+  --accent:  var(--ac-orange);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-serif);
+}
+
+/* --------------------------------------------------------------------------
+   Shared components
+   -------------------------------------------------------------------------- */
+
+.hero {
+  font-family: var(--f-sans);
+  font-size: var(--t-hero);
+  font-weight: var(--hero-wt);
+  letter-spacing: var(--hero-tr);
+  margin: 0;
+}
+
+/* The section lede. Mono, uppercase, tracked. Marks a boundary, not a title. */
+.lede {
+  font-family: var(--f-mono);
+  font-size: var(--t-lede);
+  letter-spacing: var(--lede-tr);
+  text-transform: uppercase;
+  color: var(--grey);
+  margin: 0 0 var(--sp-2);
+}
+
+/* Provenance. Mono, because mono means machine-derived or verifiable.
+   Every claim shows where it came from. This is the retention mechanism. */
+.prov {
+  font-family: var(--f-mono);
+  font-size: var(--t-prov);
+  color: var(--faint);
+}
+
+/* A rule separates two things that needed separating. Nothing decorative. */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--hair);
+  margin: var(--sp-5) 0 var(--sp-3);
+}
+
+/* The one accent, used once. A left rule, not a highlight. */
+.mark {
+  border-left: 2px solid var(--accent);
+  padding-left: var(--sp-3);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  padding: var(--sp-4);
+}
+
+/* Status colour never travels alone — it always ships with a word. */
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: var(--sp-1);
+  vertical-align: baseline;
+}
+.dot--done    { background: var(--ac-green);  }
+.dot--flight  { background: var(--ac-amber);  }
+.dot--waiting { background: var(--ac-blue);   }
+.dot--one     { background: var(--ac-orange); }
+
+/* Refusals, kept as comments so they survive contact with a future editor:
+   - No dual-axis charts. Two scales get two charts.
+   - No colour-only meaning.
+   - No accent hue as a chart fill (--ac-* fails the mark lightness band by design).
+   - No claim without provenance.
+   - No scroll on a glance surface.
+   - No decorative border.
+   - No emoji.
+*/

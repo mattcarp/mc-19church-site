@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-mc="document">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,32 +8,36 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#fffefc" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fffefc'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='serif' font-size='17' fill='%23111111'%3E19%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="assets/mc.css" />
     <style>
-      :root {
-        --ink: #111;
-        --grey: #555;
-        --faint: #8a8479;
-        --hair: #ddd;
-        --bg: #fffefc;
-        --stone: #f2ede4;
-      }
+      /* ------------------------------------------------------------------
+         19 Church Street — page layer.
+         Tokens come from assets/mc.css. Nothing here redefines a colour;
+         everything below is layout, or a serif reading size the token
+         scale does not cover (this surface is read, not glanced).
+         ------------------------------------------------------------------ */
 
       *, *::before, *::after { box-sizing: border-box; }
       html, body { margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
 
       body {
-        font-family: Charter, "Bitstream Charter", Cambria, Georgia, serif;
+        font-family: var(--f-serif);
         font-size: 17px;
         line-height: 1.55;
         color: var(--ink);
         background: var(--bg);
       }
 
-      .page { max-width: 960px; margin: 0 auto; padding: 32px 20px 48px; }
+      .page { max-width: 960px; margin: 0 auto; padding: var(--sp-5) 20px 48px; }
 
-      a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 3px; }
-      a:hover { text-decoration-color: var(--ink); }
+      a {
+        color: var(--ink);
+        text-decoration: underline;
+        text-decoration-color: var(--hair);
+        text-underline-offset: 3px;
+      }
+      a:hover { text-decoration-color: var(--accent); }
 
       header.top {
         display: flex;
@@ -41,52 +45,67 @@
         align-items: baseline;
         gap: 16px;
         flex-wrap: wrap;
-        padding-bottom: 12px;
+        padding-bottom: var(--sp-3);
         border-bottom: 1px solid var(--ink);
-        margin-bottom: 28px;
+        margin-bottom: var(--sp-4);
       }
-      header.top h1 { font-size: 1.35rem; font-weight: 700; margin: 0; }
-      header.top nav { font-size: 0.95rem; color: var(--grey); }
+      header.top h1 {
+        font-family: var(--f-serif);
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin: 0;
+      }
+      header.top .where {
+        font-family: var(--f-mono);
+        font-size: var(--t-prov);
+        letter-spacing: 0.04em;
+        color: var(--grey);
+      }
 
-      .status { font-size: 0.95rem; color: var(--grey); margin: 0 0 24px; max-width: 68ch; }
-      .status b { color: var(--ink); font-weight: 700; }
+      /* The one accent on this page, used once. */
+      .standing {
+        max-width: var(--measure);
+        margin: 0 0 var(--sp-4);
+        color: var(--grey);
+        font-size: 0.95rem;
+      }
+      .standing b { color: var(--ink); font-weight: 700; }
 
       figure { margin: 0; }
-      figure.photo { margin: 0 0 6px; }
+      figure.photo { margin: 0 0 var(--sp-1); }
       figure.photo img { display: block; width: 100%; height: auto; cursor: zoom-in; }
-      figure.photo figcaption { font-size: 0.85rem; color: var(--grey); font-style: italic; padding: 6px 0 0; }
+      figure.photo figcaption {
+        font-family: var(--f-mono);
+        font-size: var(--t-prov);
+        color: var(--faint);
+        padding: var(--sp-2) 0 0;
+      }
 
-      /* Placeholder frames — replaced as real photographs arrive */
+      /* Placeholder plates — replaced as real photographs arrive. */
       .plate {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--stone);
+        background: var(--surface);
         border: 1px solid var(--hair);
         color: var(--faint);
-        font-size: 0.8rem;
-        font-style: italic;
-        letter-spacing: 0.02em;
+        font-family: var(--f-mono);
+        font-size: var(--t-prov);
+        letter-spacing: 0.04em;
         text-align: center;
-        padding: 12px;
+        padding: var(--sp-3);
       }
       .plate--hero { aspect-ratio: 16 / 9; }
       .plate--tile { aspect-ratio: 4 / 3; }
 
-      .lead { margin: 28px 0 8px; max-width: 68ch; }
+      .lead { margin: var(--sp-4) 0 var(--sp-2); max-width: var(--measure); }
       .lead p { margin: 0 0 1em; }
       .lead .sig { color: var(--grey); font-style: italic; font-size: 0.95rem; }
 
-      h2 {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin: 40px 0 10px;
-        padding-top: 14px;
-        border-top: 1px solid var(--hair);
-      }
+      section { margin-top: var(--sp-5); padding-top: var(--sp-3); border-top: 1px solid var(--hair); }
 
       table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
-      table.particulars { max-width: 620px; }
+      table.particulars { max-width: 640px; }
       td, th {
         text-align: left;
         vertical-align: top;
@@ -94,27 +113,24 @@
         border-bottom: 1px solid var(--hair);
         font-weight: 400;
       }
-      th { color: var(--grey); white-space: nowrap; width: 1%; }
+      th {
+        font-family: var(--f-mono);
+        font-size: var(--t-prov);
+        color: var(--grey);
+        white-space: nowrap;
+        width: 1%;
+      }
       tr:last-child td, tr:last-child th { border-bottom: none; }
 
-      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 18px; margin-top: 14px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4) 18px; margin-top: var(--sp-3); }
       .grid figure.photo { margin: 0; }
       .grid img { aspect-ratio: 4 / 3; object-fit: cover; }
 
-      .ledger { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; margin-top: 14px; }
-      .ledger h3 {
-        font-size: 0.85rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--grey);
-        margin: 0 0 8px;
-      }
+      .ledger { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; margin-top: var(--sp-3); }
       .ledger ul { margin: 0; padding: 0; list-style: none; font-size: 0.95rem; }
       .ledger li { padding: 5px 0; border-bottom: 1px solid var(--hair); }
       .ledger li:last-child { border-bottom: none; }
 
-      table.nbhd th { padding-right: 18px; }
       table.nbhd td.place { white-space: nowrap; padding-right: 18px; }
       table.nbhd td.note { color: var(--grey); }
 
@@ -126,15 +142,13 @@
         gap: 16px;
         flex-wrap: wrap;
         margin-top: 44px;
-        padding-top: 12px;
+        padding-top: var(--sp-3);
         border-top: 1px solid var(--ink);
-        font-size: 0.85rem;
-        color: var(--grey);
       }
 
       @media (max-width: 640px) {
         .grid, .ledger { grid-template-columns: 1fr; }
-        .ledger > div + div { margin-top: 24px; }
+        .ledger > div + div { margin-top: var(--sp-4); }
       }
     </style>
   </head>
@@ -143,18 +157,18 @@
 
       <header class="top">
         <h1>No. 19, Triq il-Knisja</h1>
-        <nav>Xagħra &middot; Gozo &middot; Malta</nav>
+        <div class="where">XAGĦRA &middot; GOZO &middot; MALTA</div>
       </header>
 
-      <p class="status">
+      <p class="standing mark">
         <b>A private page.</b> Not a listing, not for sale, not indexed by search engines.
         Made for the people who lived in this house before we did &mdash; so they can see
         what became of it.
       </p>
 
       <figure class="photo">
-        <div class="plate plate--hero">hero photograph &mdash; the façade on Triq il-Knisja</div>
-        <figcaption>The house from the street, 2026.</figcaption>
+        <div class="plate plate--hero">HERO &mdash; THE FAÇADE ON TRIQ IL-KNISJA</div>
+        <figcaption>The house from the street &middot; 2026</figcaption>
       </figure>
 
       <div class="lead">
@@ -164,64 +178,76 @@
           two people who know every inch of it already, so: no salesmanship, no
           adjectives doing work the photographs can do.]
         </p>
-        <p class="sig">&mdash; Matt &amp; family, custodians since <span class="tk">[year]</span>.</p>
+        <p class="sig">&mdash; Matt &amp; Fiona, custodians since 2021.</p>
       </div>
 
-      <h2>Particulars</h2>
-      <table class="particulars">
-        <tr><th>Address</th><td>No. 19, Triq il-Knisja, Ix-Xagħra, Gozo, Malta</td></tr>
-        <tr><th>Built</th><td class="tk">[c. year &mdash; TK]</td></tr>
-        <tr><th>Layout</th><td class="tk">[rooms &mdash; TK]</td></tr>
-        <tr><th>Fabric</th><td class="tk">[Globigerina limestone, timber, tiles &mdash; TK]</td></tr>
-        <tr><th>Restored</th><td class="tk">[years of work &mdash; TK]</td></tr>
-        <tr><th>Nearest landmark</th><td>Il-Bażilika tal-Vitorja, on the square</td></tr>
-      </table>
+      <section>
+        <p class="lede">Particulars</p>
+        <table class="particulars">
+          <tr><th>Address</th><td>No. 19, Triq il-Knisja, Ix-Xagħra XRA 1236, Gozo</td></tr>
+          <tr><th>Built</th><td class="tk">[c. year — TK]</td></tr>
+          <tr><th>Layout</th><td class="tk">[rooms — TK]</td></tr>
+          <tr><th>Fabric</th><td class="tk">[globigerina limestone, timber, tiles — TK]</td></tr>
+          <tr><th>Floor area</th><td>c. 250 m² per floor, two floors</td></tr>
+          <tr><th>Restored</th><td class="tk">[years of work — TK]</td></tr>
+          <tr><th>Custodians</th><td>2017–2021 &middot; <span class="tk">[their names]</span><br />2021– &middot; Matt &amp; Fiona</td></tr>
+        </table>
+        <p class="prov" style="margin-top:var(--sp-3)">
+          Source: purchase deed, 2021 &middot; Dr Josette Spiteri Cauchi, notary
+        </p>
+      </section>
 
-      <h2>Photographs</h2>
-      <div class="grid">
-        <figure class="photo"><div class="plate plate--tile">01</div><figcaption class="tk">[caption]</figcaption></figure>
-        <figure class="photo"><div class="plate plate--tile">02</div><figcaption class="tk">[caption]</figcaption></figure>
-        <figure class="photo"><div class="plate plate--tile">03</div><figcaption class="tk">[caption]</figcaption></figure>
-        <figure class="photo"><div class="plate plate--tile">04</div><figcaption class="tk">[caption]</figcaption></figure>
-        <figure class="photo"><div class="plate plate--tile">05</div><figcaption class="tk">[caption]</figcaption></figure>
-        <figure class="photo"><div class="plate plate--tile">06</div><figcaption class="tk">[caption]</figcaption></figure>
-      </div>
-
-      <h2>What we kept &middot; What we changed</h2>
-      <div class="ledger">
-        <div>
-          <h3>Kept</h3>
-          <ul>
-            <li class="tk">[the original floor tiles]</li>
-            <li class="tk">[the stone arch]</li>
-            <li class="tk">[the timber beams]</li>
-            <li class="tk">[the door and its architrave]</li>
-          </ul>
+      <section>
+        <p class="lede">Photographs</p>
+        <div class="grid">
+          <figure class="photo"><div class="plate plate--tile">01</div><figcaption class="tk">[caption]</figcaption></figure>
+          <figure class="photo"><div class="plate plate--tile">02</div><figcaption class="tk">[caption]</figcaption></figure>
+          <figure class="photo"><div class="plate plate--tile">03</div><figcaption class="tk">[caption]</figcaption></figure>
+          <figure class="photo"><div class="plate plate--tile">04</div><figcaption class="tk">[caption]</figcaption></figure>
+          <figure class="photo"><div class="plate plate--tile">05</div><figcaption class="tk">[caption]</figcaption></figure>
+          <figure class="photo"><div class="plate plate--tile">06</div><figcaption class="tk">[caption]</figcaption></figure>
         </div>
-        <div>
-          <h3>Changed</h3>
-          <ul>
-            <li class="tk">[the bathroom]</li>
-            <li class="tk">[wiring and plumbing]</li>
-            <li class="tk">[the roof / the yard]</li>
-            <li class="tk">[the kitchen]</li>
-          </ul>
-        </div>
-      </div>
+      </section>
 
-      <h2>The village</h2>
-      <table class="nbhd">
-        <tr><th>On the square</th><td class="place">Il-Bażilika tal-Vitorja</td><td class="note">The parish church; the bells you already know.</td></tr>
-        <tr><th>5 min</th><td class="place">Ġgantija</td><td class="note">Older than the pyramids; older than Stonehenge.</td></tr>
-        <tr><th>5 min</th><td class="place">Ta' Kola Windmill</td><td class="note">1725, and still standing over the village.</td></tr>
-        <tr><th>5 min</th><td class="place">Xerri's Grotto &amp; Ninu's Cave</td><td class="note">Two caves found under two ordinary houses.</td></tr>
-        <tr><th>10 min</th><td class="place">Ramla l-Ħamra</td><td class="note">The red sand, down the hill.</td></tr>
-        <tr><th>15 min</th><td class="place">Ir-Rabat (Victoria)</td><td class="note">The Ċittadella, the market, the buses.</td></tr>
-      </table>
+      <section>
+        <p class="lede">What we kept &middot; What we changed</p>
+        <div class="ledger">
+          <div>
+            <p class="prov"><span class="dot dot--done"></span>KEPT</p>
+            <ul>
+              <li class="tk">[the original floor tiles]</li>
+              <li class="tk">[the stone arch]</li>
+              <li class="tk">[the timber beams]</li>
+              <li class="tk">[the door and its architrave]</li>
+            </ul>
+          </div>
+          <div>
+            <p class="prov"><span class="dot dot--one"></span>CHANGED</p>
+            <ul>
+              <li class="tk">[the bathroom]</li>
+              <li class="tk">[wiring and plumbing]</li>
+              <li class="tk">[the roof / the yard]</li>
+              <li class="tk">[the kitchen]</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <p class="lede">The village</p>
+        <table class="nbhd">
+          <tr><th>On the square</th><td class="place">Il-Bażilika tal-Vitorja</td><td class="note">The parish church; the bells you already know.</td></tr>
+          <tr><th>5 min</th><td class="place">Ġgantija</td><td class="note">Older than the pyramids, older than Stonehenge.</td></tr>
+          <tr><th>5 min</th><td class="place">Ta' Kola Windmill</td><td class="note">1725, still standing over the village.</td></tr>
+          <tr><th>5 min</th><td class="place">Xerri's Grotto &amp; Ninu's Cave</td><td class="note">Two caves found under two ordinary houses.</td></tr>
+          <tr><th>10 min</th><td class="place">Ramla l-Ħamra</td><td class="note">The red sand, down the hill.</td></tr>
+          <tr><th>15 min</th><td class="place">Ir-Rabat (Victoria)</td><td class="note">The Ċittadella, the market, the buses.</td></tr>
+        </table>
+      </section>
 
       <footer class="bottom">
-        <div>19 Church Street &middot; Ix-Xagħra &middot; Gozo</div>
-        <div>&copy; <span id="colophon-year">2026</span></div>
+        <div class="prov">19 CHURCH STREET &middot; IX-XAGĦRA &middot; GOZO</div>
+        <div class="prov">© <span id="colophon-year">2026</span></div>
       </footer>
 
     </div>
