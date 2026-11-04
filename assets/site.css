@@ -94,6 +94,9 @@ a:hover { color: var(--stone); text-decoration-color: var(--stone); }
 .photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--raise); transition: opacity .2s; }
 .photo.p img { aspect-ratio: 2 / 3; }
 .photo.w img { aspect-ratio: 16 / 7; }
+.photo.original { grid-column: 1 / -1; }
+.photo.original img { width: auto; max-height: 78vh; aspect-ratio: auto; object-fit: contain; margin-inline: auto; }
+.photo.original figcaption { text-align: center; color: var(--ink-2); }
 .photo a:hover img { opacity: .86; }
 
 /* Section heading */
