@@ -45,10 +45,11 @@ a:hover { color: var(--stone); text-decoration-color: var(--stone); }
 
 /* Hero photograph: sized to the picture, never to the viewport */
 .hero { margin-block: 0; }
-.hero img { width: 100%; max-height: 78vh; object-fit: cover; }
+.hero img { width: auto; max-height: 78vh; object-fit: contain; margin-inline: auto; }
 .hero figcaption, .photo figcaption {
   font: 400 12px/1.4 var(--mono); color: var(--ink-3); padding-top: 10px; letter-spacing: .02em;
 }
+.hero figcaption { text-align: center; color: var(--ink-2); }
 
 /* Address block */
 .address {
