@@ -4,4 +4,4 @@ Static record of the Gozo house, linked from Island Commute. This site is curren
 
 To update a photograph, add its asset and update `index.html` with accurate dimensions and alt text. Keep portrait photographs uncropped. Preview with `python3 -m http.server --bind 127.0.0.1 8848`, check at 375/768/1440, review, then commit only the intended paths and push to `origin main`. Verify the Pages build and the actual public page and image after publishing. Do not broadly stage `assets/` or publish private files.
 
-Lead photograph: `assets/02-hallway.png`, supplied by Matt on 4 November 2026, stored unchanged at 1500×2000. The original façade photograph, `assets/01-facade.png` (1086×1448), is retained below the introduction. Both portraits display uncropped. Additional interior photographs are still pending.
+Lead photograph: `assets/02-hallway.jpg` (1500×2000; converted from the PNG Matt supplied on 4 November 2026, kept in git history). The original façade photograph, `assets/01-facade.jpg` (1086×1448), is retained below the introduction. Both portraits display uncropped. Additional interior photographs are still pending.
