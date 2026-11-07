@@ -53,7 +53,7 @@ a:hover { color: var(--stone); text-decoration-color: var(--stone); }
 
 /* Address block */
 .address {
-  display: grid; grid-template-columns: auto 1fr; column-gap: clamp(14px, 2.4vw, 32px); align-items: end;
+  display: grid; grid-template-columns: 1fr; align-items: end;
   padding-block: clamp(36px, 6vw, 80px) clamp(28px, 4vw, 48px);
 }
 .address .no {
