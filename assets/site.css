@@ -90,6 +90,7 @@ a:hover { color: var(--stone); text-decoration-color: var(--stone); }
 .photo { margin: 0; grid-column: span 4; }
 .photo.p { grid-column: span 2; }
 .photo.w { grid-column: 1 / -1; }
+.photo.p.half { grid-column: span 3; }
 .photo a { display: block; cursor: zoom-in; }
 .photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--raise); transition: opacity .2s; }
 .photo.p img { aspect-ratio: 2 / 3; }
@@ -151,7 +152,7 @@ dialog.lb::backdrop { background: rgba(10, 11, 12, .96); }
 @media (max-width: 760px) {
   .about { grid-template-columns: 1fr; }
   .photos { grid-template-columns: 1fr; }
-  .photo, .photo.p, .photo.w { grid-column: auto; }
+  .photo, .photo.p, .photo.p.half, .photo.w { grid-column: auto; }
   .photo img, .photo.p img, .photo.w img { aspect-ratio: auto; }
   .address { grid-template-columns: 1fr; row-gap: 14px; }
 }
